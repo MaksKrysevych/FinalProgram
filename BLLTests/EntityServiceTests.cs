@@ -16,7 +16,6 @@ namespace BLL.Tests
             Assert.AreEqual(1, dishes.Count);
         }
 
-
         [TestMethod]
         public void TestDeleteStudent()
         {
@@ -36,6 +35,7 @@ namespace BLL.Tests
 
             Assert.AreEqual(45, dishes[dishes.FindIndex(r => r.NameOfDish == "Olivye")].Price);
         }
+
         [TestMethod]
         public void TestSerchingForIngredient()
         {
@@ -54,7 +54,5 @@ namespace BLL.Tests
 
             Assert.AreEqual(2, count);
         }
-
-
     }
 }

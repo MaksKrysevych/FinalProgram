@@ -54,8 +54,17 @@ namespace FinalProgram
 
                             break;
                         }
-
                     case 4:
+                        {
+                            Console.Clear();
+
+                            dataProvider.ReadDishes(dishes);
+                            dataProvider.ReadOrders(orders);
+
+                            break;
+                        }
+
+                    case 5:
                         {
                             workingOfMenu = false;
                             break;
@@ -92,6 +101,7 @@ namespace FinalProgram
                             Console.Clear();
                             IngredientManagement();
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
 
@@ -100,6 +110,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.AddDish(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
 
@@ -108,6 +119,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.DeteteDish(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
 
@@ -116,6 +128,7 @@ namespace FinalProgram
                             Console.Clear();
                             ChangingInfoOfDish();
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
 
@@ -139,7 +152,9 @@ namespace FinalProgram
                                     Console.WriteLine("Try again!");
                                 }
                             }
+                            Console.Clear();
                             break;
+
                         }
 
                     case 6:
@@ -162,6 +177,7 @@ namespace FinalProgram
                                     Console.WriteLine("Try again!");
                                 }
                             }
+                            Console.Clear();
                             break;
                         }
 
@@ -203,6 +219,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.AddIngredient(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
 
@@ -211,6 +228,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.DeleteIngredient(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
 
                             break;
                         }
@@ -220,6 +238,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.ChangeIngredient(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
 
@@ -242,6 +261,7 @@ namespace FinalProgram
                                     Console.WriteLine("Try again!");
                                 }
                             }
+                            Console.Clear();
                             break;
                         }
 
@@ -283,6 +303,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.ChangeNameOfDish(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
 
@@ -291,6 +312,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.ChangePrice(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
 
                             break;
                         }
@@ -299,6 +321,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.ChangeTimeOfCoocking(dishes);
                             dataProvider.JSONSerializationOfDishes(dishes);
+                            Console.Clear();
                             break;
                         }
                     case 4:
@@ -320,6 +343,7 @@ namespace FinalProgram
                                     Console.WriteLine("Try again!");
                                 }
                             }
+                            Console.Clear();
                             break;
                         }
 
@@ -359,8 +383,9 @@ namespace FinalProgram
                     case 1:
                         {
                             Console.Clear();
-                            entityService.AddOrder(orders);
+                            entityService.AddOrder(orders, dishes);
                             dataProvider.JSONSerializationOfOrders(orders);
+                            Console.Clear();
                             break;
                         }
 
@@ -369,6 +394,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.DeleteOrder(orders);
                             dataProvider.JSONSerializationOfOrders(orders);
+                            Console.Clear();
                             break;
                         }
 
@@ -377,6 +403,7 @@ namespace FinalProgram
                             Console.Clear();
                             ChangingInfoOfOrdering();
                             dataProvider.JSONSerializationOfOrders(orders);
+                            Console.Clear();
                             break;
                         }
 
@@ -399,6 +426,7 @@ namespace FinalProgram
                                     Console.WriteLine("Try again!");
                                 }
                             }
+                            Console.Clear();
                             break;
                         }
 
@@ -421,6 +449,7 @@ namespace FinalProgram
                                     Console.WriteLine("Try again!");
                                 }
                             }
+                            Console.Clear();
                             break;
                         }
 
@@ -461,6 +490,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.ChangeNumberOfDishesInOrder(orders);
                             dataProvider.JSONSerializationOfOrders(orders);
+                            Console.Clear();
                             break;
                         }
 
@@ -469,6 +499,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.ChangeTotalAmountInOrder(orders);
                             dataProvider.JSONSerializationOfOrders(orders);
+                            Console.Clear();
                             break;
                         }
 
@@ -477,6 +508,7 @@ namespace FinalProgram
                             Console.Clear();
                             entityService.ChangeNumberOfTableInOrder(orders);
                             dataProvider.JSONSerializationOfOrders(orders);
+                            Console.Clear();
                             break;
                         }
 
@@ -499,6 +531,7 @@ namespace FinalProgram
                                     Console.WriteLine("Try again!");
                                 }
                             }
+                            Console.Clear();
                             break;
                         }
 
@@ -539,6 +572,22 @@ namespace FinalProgram
                         {
                             Console.Clear();
                             entityService.SerchingForIngredient(dishes);
+                            while (true)
+                            {
+                                Console.WriteLine("Enter x - to exit");
+                                string exit = Console.ReadLine();
+
+                                if (exit == "x")
+                                {
+                                    Console.Clear();
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Try again!");
+                                }
+                            }
+                            Console.Clear();
                             break;
                         }
 
@@ -546,6 +595,22 @@ namespace FinalProgram
                         {
                             Console.Clear();
                             entityService.SearchingForOrders(orders);
+                            while (true)
+                            {
+                                Console.WriteLine("Enter x - to exit");
+                                string exit = Console.ReadLine();
+
+                                if (exit == "x")
+                                {
+                                    Console.Clear();
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Try again!");
+                                }
+                            }
+                            Console.Clear();
                             break;
                         }
 
@@ -569,7 +634,8 @@ namespace FinalProgram
             Console.WriteLine("1. Food management");
             Console.WriteLine("2. Ordering management");
             Console.WriteLine("3. Searching");
-            Console.WriteLine("4. Exit\n\n");
+            Console.WriteLine("4. Update info about menu");
+            Console.WriteLine("5. Exit\n\n");
         }
         void MenuOfFoodManagement()
         {

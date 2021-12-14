@@ -17,20 +17,14 @@ namespace DAL
 
             
         }
-        public void ReadDishes()
+        public void ReadDishes(List<Dishes> dishes)
         {
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Dishes>));
             using (var file = new FileStream("dishes.json", FileMode.OpenOrCreate))
             {
                 var newDishes = jsonFormatter.ReadObject(file) as List<Dishes>;
 
-                if (newDishes != null)
-                {
-                    foreach (var dish in newDishes)
-                    {
-                        Console.WriteLine(dish);
-                    }
-                }
+                dishes = newDishes;
             }
         }
 
@@ -44,20 +38,14 @@ namespace DAL
 
             
         }
-        public void ReadOrders()
+        public void ReadOrders(List<Orders> orders)
         {
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Orders>));
             using (var file = new FileStream("orders.json", FileMode.OpenOrCreate))
             {
                 var newOrders = jsonFormatter.ReadObject(file) as List<Orders>;
 
-                if (newOrders != null)
-                {
-                    foreach (var order in newOrders)
-                    {
-                        Console.WriteLine(order);
-                    }
-                }
+                orders = newOrders;
             }
         }
     }

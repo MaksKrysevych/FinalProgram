@@ -12,13 +12,49 @@ namespace BLL
             {
                 try
                 {
-                    Console.WriteLine("Enter name of dish:");
-                    string nameOfDish = Console.ReadLine();
+                    string nameOfDish;
+                    while (true)
+                    {
+                        Console.WriteLine("Enter name of dish:");
+                        nameOfDish = Console.ReadLine();
+                        bool containSymbol = false;
+                        foreach (char c in nameOfDish)
+                        {
+                            if (Char.IsDigit(c))
+                            {
+                                containSymbol = true;
+                                Console.WriteLine("It contain symbols");
+                                break;
+                            }
+                        }
+                        if (containSymbol == false)
+                        {
+                            break;
+                        }
+                    }
                     Console.WriteLine("Enter price:");
                     double price = Convert.ToDouble(Console.ReadLine());
+                    string ingredients;
+                    while (true)
+                    {
+                        Console.WriteLine("Enter ingredients:");
+                        ingredients = Console.ReadLine();
+                        bool containSymbol = false;
+                        foreach (char c in ingredients)
+                        {
+                            if (Char.IsDigit(c))
+                            {
+                                containSymbol = true;
+                                Console.WriteLine("It contain symbols");
+                                break;
+                            }
+                        }
+                        if (containSymbol == false)
+                        {
+                            break;
+                        }
 
-                    Console.WriteLine("Enter ingredients:");
-                    string ingredients = Console.ReadLine();
+                    }
                     Console.WriteLine("Enter time of coocking:");
                     double timeOfCoocking = Convert.ToDouble(Console.ReadLine());
 
@@ -201,7 +237,7 @@ namespace BLL
             }
         }
 
-        public void AddOrder(List<Orders> orders)
+        public void AddOrder(List<Orders> orders, List<Dishes> dishes)
         {
             while (true)
             {
@@ -211,10 +247,37 @@ namespace BLL
                     int numberOfTable = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Enter number of dishes:");
                     int numberOfDishes = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Enter total amount:");
-                    double totalAmount = Convert.ToDouble(Console.ReadLine());
+                    string listOfDishes;
+                    double totalAmount;
+                    while (true)
+                    {
+                        Console.WriteLine("Enter dishes:");
+                        bool IsProblem = false;
+                        listOfDishes = Console.ReadLine();
+                        string[] arrOfDishes = listOfDishes.Split(' ');
+                        totalAmount = 0;
+                        for (int i = 0; i < arrOfDishes.Length; i++)
+                        {
+                            if (dishes.Contains(dishes.Find(r => r.NameOfDish == arrOfDishes[i])))
+                            {
+                                totalAmount += dishes.Find(r => r.NameOfDish == arrOfDishes[i]).Price;
+                                continue;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not exist 1 of the dishes");
+                                IsProblem = true;
+                            }
+                        }
+                        if (IsProblem != true)
+                        {
+                            break;
+                        }
+                    }
+                    Console.WriteLine("Total amount: " + totalAmount);
+                    
 
-                    orders.Add(new Orders(numberOfDishes, totalAmount, numberOfTable));
+                    orders.Add(new Orders(numberOfDishes, totalAmount, numberOfTable, listOfDishes));
                     break;
                 }
                 catch (FormatException ex)
@@ -302,6 +365,7 @@ namespace BLL
             {
                 Console.WriteLine("Number of table: " + o.NumberOfTable);
                 Console.WriteLine("Number of dish: " + o.NumberOfDishes);
+                Console.WriteLine("Dishes: " + o.ListOfOrderDishes.Replace(" ", ", "));
                 Console.WriteLine("Total amount: " + o.TotalAmount);
                 Console.WriteLine();
             }

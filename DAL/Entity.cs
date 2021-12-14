@@ -13,6 +13,7 @@ namespace DAL
             Ingredient = ingredient;
         }
     }
+
     [DataContract]
     public class Dishes : Ingredients
     {
@@ -41,12 +42,15 @@ namespace DAL
         public double TotalAmount { get; set; }
         [DataMember]
         public int NumberOfTable { get; set; }
+        [DataMember]
+        public string ListOfOrderDishes { get; set; }
 
-        public Orders(int numberOfDishes, double totalAmount, int numberOfTable)
+        public Orders(int numberOfDishes, double totalAmount, int numberOfTable, string listOfOrderDishes)
         {
-            NumberOfDishes = numberOfDishes;
-            TotalAmount = totalAmount;
             NumberOfTable = numberOfTable;
+            NumberOfDishes = numberOfDishes;
+            ListOfOrderDishes = listOfOrderDishes;
+            TotalAmount = totalAmount;
         }
     }
 }
