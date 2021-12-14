@@ -24,7 +24,13 @@ namespace DAL
             {
                 var newDishes = jsonFormatter.ReadObject(file) as List<Dishes>;
 
-                dishes = newDishes;
+                if (newDishes != null)
+                {
+                    foreach (var dish in newDishes)
+                    {
+                        Console.WriteLine(dish);
+                    }
+                }
             }
         }
 
@@ -45,7 +51,13 @@ namespace DAL
             {
                 var newOrders = jsonFormatter.ReadObject(file) as List<Orders>;
 
-                orders = newOrders;
+                if (newOrders != null)
+                {
+                    foreach (var order in newOrders)
+                    {
+                        Console.WriteLine(order);
+                    }
+                }
             }
         }
     }

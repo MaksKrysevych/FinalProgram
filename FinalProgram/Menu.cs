@@ -54,17 +54,8 @@ namespace FinalProgram
 
                             break;
                         }
+
                     case 4:
-                        {
-                            Console.Clear();
-
-                            dataProvider.ReadDishes(dishes);
-                            dataProvider.ReadOrders(orders);
-
-                            break;
-                        }
-
-                    case 5:
                         {
                             workingOfMenu = false;
                             break;
@@ -634,8 +625,7 @@ namespace FinalProgram
             Console.WriteLine("1. Food management");
             Console.WriteLine("2. Ordering management");
             Console.WriteLine("3. Searching");
-            Console.WriteLine("4. Update info about menu");
-            Console.WriteLine("5. Exit\n\n");
+            Console.WriteLine("4. Exit\n\n");
         }
         void MenuOfFoodManagement()
         {
